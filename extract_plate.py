@@ -67,12 +67,13 @@ def extract_plate(input_image_path,input_template_path):
     w_min = top_left[0]
     w_max = bottom_right[0]
     if h_min < 0 or w_min < 0 or h_max > img_height or w_max > img_width:
-        return orig_img
-    orig_img = orig_img [h_min : h_max , w_min : w_max ]
-    return orig_img
+        cv2.imwrite("extracted_plate_same.JPG",orig_img)
+    else:
+        orig_img = orig_img [h_min : h_max , w_min : w_max ]
+        cv2.imwrite("extracted_plate_modified.JPG",orig_img)
 
 #############################################################################################
 #test 
-plate = extract_plate("sample1.JPG","template_num.JPG")
-cv2.imwrite("extracted_plate.JPG",plate)
-cv2.waitKey(0)
+plate = extract_plate("sample24.JPG","template_num.JPG")
+
+#cv2.waitKey(0)
