@@ -1,7 +1,7 @@
 ################################### packages ################################
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
+
 
 def extract_plate(input_image_path,input_template_path):
     
