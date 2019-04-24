@@ -59,8 +59,8 @@ def extract_plate(input_image_path,input_template_path):
 
     #cv2.rectangle(orig_img , max_loc , (max_loc[0]+1,max_loc[1]+1) , 255, 5)
     #cv2.imshow('detected',orig_img)
-    top_left = (int(max_loc[0] - w) , int(max_loc[1] - h/2))
-    bottom_right = (int(max_loc[0] + w) , int(max_loc[1] + h/2))
+    top_left = (int(max_loc[0] - w) , int(max_loc[1] - h))
+    bottom_right = (int(max_loc[0] + 2*w) , int(max_loc[1] + 2*h))
     
     h_min = top_left[1]
     h_max = bottom_right[1]
@@ -73,6 +73,6 @@ def extract_plate(input_image_path,input_template_path):
 
 #############################################################################################
 #test 
-plate = extract_plate("sample21.JPG","template_num.JPG")
+plate = extract_plate("sample1.JPG","template_num.JPG")
 cv2.imwrite("extracted_plate.JPG",plate)
 cv2.waitKey(0)
