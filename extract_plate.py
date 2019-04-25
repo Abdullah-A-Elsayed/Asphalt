@@ -1,7 +1,7 @@
 ################################### packages ################################
 import cv2
 import numpy as np
-
+import time
 
 def extract_plate(input_image_path,input_template_path):
     
@@ -66,14 +66,16 @@ def extract_plate(input_image_path,input_template_path):
     h_max = bottom_right[1]
     w_min = top_left[0]
     w_max = bottom_right[0]
+    new_img_path = str(time.time())+".jpg"
     if h_min < 0 or w_min < 0 or h_max > img_height or w_max > img_width:
-        cv2.imwrite("extracted_plate_same.JPG",orig_img)
+        cv2.imwrite(new_img_path,orig_img)
     else:
         orig_img = orig_img [h_min : h_max , w_min : w_max ]
-        cv2.imwrite("extracted_plate_modified.JPG",orig_img)
+        cv2.imwrite(new_img_path,orig_img)
+    return new_img_path
 
 #############################################################################################
 #test 
-plate = extract_plate("sample24.JPG","template_num.JPG")
+#plate = extract_plate("sample23.JPG","template_num.JPG")
 
 #cv2.waitKey(0)
